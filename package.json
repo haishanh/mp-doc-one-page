@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "start": "NODE_ENV=development DEBUG=app node app.js",
+    "build": "DEBUG=app node app.js"
+  },
+  "name": "mp-doc-one-page",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "private": true,
+  "author": "Han Haishan <haishanhan@gmail.com> (htttp://haishan.me)",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "debug": "^4.0.1",
+    "node-fetch": "^2.2.0"
+  }
+}

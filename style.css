@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  padding: 0 16px;
+  font-family: -apple-system, 'Noto Sans', 'Helvetica Neue', Helvetica,
+    'Nimbus Sans L', Arial, 'Liberation Sans', 'PingFang SC', 'Hiragino Sans GB',
+    'Noto Sans CJK SC', 'Source Han Sans SC', 'Source Han Sans CN',
+    'Microsoft YaHei', 'Wenquanyi Micro Hei', 'WenQuanYi Zen Hei', 'ST Heiti',
+    SimHei, 'WenQuanYi Zen Hei Sharp', sans-serif;
+}
+
+ul,
+li {
+  line-height: 1.6em;
+}
+
+a {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #6d6d6d;
+}
+
+ul > li > a {
+  display: flex;
+  align-items: center;
+  height: 35px;
+
+  position: sticky;
+  background: rgba(255, 255, 255, 0.85);
+  top: 0px;
+}
+
+ul > li > ul > li > a {
+  position: static;
+}
+
+.summary {
+  margin-left: 200px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  height: 35px;
+
+  position: sticky;
+  width: 200px;
+  top: 0px;
+  background: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  padding: 0;
+}
+
+.tagline {
+  color: #555;
+}
+.tagline code {
+  padding: 0 5px 2px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-clip: padding-box;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Courier New', monospace;
+  font-size: 13px;
+  color: #666;
+}
+
+.generate-time {
+  padding: 14px 0 40px;
+  font-size: 0.75em;
+  color: #777;
+}
