@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const path = require('path');
+const url = require('url');
 const util = require('util');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
@@ -9,7 +9,6 @@ const debug = require('debug')('app');
 
 const { groups } = require('./doc-groups');
 
-const join = path.join;
 const writeFile = util.promisify(fs.writeFile);
 const readFile = util.promisify(fs.readFile);
 
@@ -24,7 +23,7 @@ function parseTOC(baseURL, text) {
   $('ul.summary li.divider').remove();
   $('.summary a').map((i, el) => {
     const relHref = $(el).attr('href');
-    const absHref = join(baseURL, relHref);
+    const absHref = url.resolve(baseURL, relHref);
     $(el).attr('href', absHref);
     // make link opened in new tab
     $(el).attr('target', '_blank');
@@ -66,7 +65,7 @@ async function genSection(item, idPrefix) {
   const { fetchURL, baseURL, title, id: idSuffix } = item;
   const id = idPrefix + idSuffix;
   const text = await getPage(fetchURL);
-  let html = parseTOC(baseURL, text);
+  let html = parseTOC(fetchURL, text);
   html =
     `<div><h2 class="section-title" id="${id}">${title}</h2>` + html + '</div>';
   return html;
