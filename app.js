@@ -11,6 +11,8 @@ const { groups } = require('./doc-groups');
 
 const writeFile = util.promisify(fs.writeFile);
 const readFile = util.promisify(fs.readFile);
+const rmdir = util.promisify(fs.rmdir);
+const mkdir = util.promisify(fs.mkdir);
 
 async function getPage(url) {
   const res = await fetch(url, { timeout: 9000 });
@@ -85,12 +87,19 @@ async function genBlock() {
   return html;
 }
 
+async function prepare() {
+  try {
+    await mkdir('build');
+  } catch (err) {
+    if (err.code !== 'EEXIST') throw err;
+  }
+}
+
 async function main() {
-  const html = await genBlock();
+  const [html, _] = await Promise.all([genBlock(), prepare()]);
   // render
   const outputHTML = await render(html);
-  const outputFileName = 'index' + '.html';
-  await writeFile(outputFileName, outputHTML, 'utf8');
+  await writeFile('build/index.html', outputHTML, 'utf8');
 }
 
 main();
