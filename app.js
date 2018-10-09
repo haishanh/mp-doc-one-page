@@ -63,7 +63,7 @@ async function render(content) {
 
 async function genSection(item, idPrefix) {
   const { fetchURL, baseURL, title, id: idSuffix } = item;
-  const id = idPrefix + idSuffix;
+  const id = idPrefix + '-' + idSuffix;
   const text = await getPage(fetchURL);
   let html = parseTOC(fetchURL, text);
   html =
@@ -77,7 +77,7 @@ async function genBlock() {
     const group = groups[i];
     for (let j = 0; j < group.sections.length; j++) {
       const section = group.sections[j];
-      const tmp = await genSection(section);
+      const tmp = await genSection(section, group.id);
       if (!tmp || typeof tmp !== 'string') debug(tmp);
       html += tmp;
     }
