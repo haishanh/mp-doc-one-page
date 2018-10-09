@@ -111,10 +111,15 @@ async function prepare() {
 }
 
 async function main() {
-  const [html, _] = await Promise.all([genBlock(), prepare()]);
-  // render
-  const outputHTML = await render(html);
-  await writeFile('build/index.html', outputHTML, 'utf8');
+  try {
+    const [html, _] = await Promise.all([genBlock(), prepare()]);
+    // render
+    const outputHTML = await render(html);
+    await writeFile('build/index.html', outputHTML, 'utf8');
+  } catch (err) {
+    debug(err);
+    process.exit(-1);
+  }
 }
 
 main();
