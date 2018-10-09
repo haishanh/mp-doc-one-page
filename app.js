@@ -6,6 +6,7 @@ const util = require('util');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 const debug = require('debug')('app');
+const withRetry = require('hs-with-retry');
 
 const { groups } = require('./doc-groups');
 
@@ -17,7 +18,8 @@ const mkdir = util.promisify(fs.mkdir);
 const sectionAnchors = [];
 
 async function getPage(url) {
-  const res = await fetch(url, { timeout: 9000 });
+  const fn = () => fetch(url, { timeout: 9000 });
+  const res = await withRetry({ attemptsTotal: 5, firstRetryDelay: 1000 })(fn);
   const text = await res.text();
   return text;
 }
@@ -83,6 +85,7 @@ async function genSection(item, idPrefix) {
     `<div><h2 class="section-title" id="${id}">${title}</h2>` + html + '</div>';
 
   // side effect
+  debug('section id: %s title: %s', id, title);
   sectionAnchors.push(`<a href="#${id}">${title}</a>`);
 
   return html;

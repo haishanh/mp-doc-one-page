@@ -97,6 +97,11 @@ entities@^1.1.1, entities@~1.1.1:
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
   integrity sha1-blwtClYhtdra7O+AuQ7ftc13cvA=
 
+hs-with-retry@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/hs-with-retry/-/hs-with-retry-0.0.2.tgz#ffee2b0b065e6de35a70c7bb66c6d74090cc2d91"
+  integrity sha512-ej9vCfq5pEfO75J+SnZvftqJwymdNt93aOuSEhMDZVaIgOT7pJlOl58/wlxFPuojxaSKXt7fF3Uwld9hPp9UPg==
+
 htmlparser2@^3.9.1:
   version "3.9.2"
   resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-3.9.2.tgz#1bdf87acca0f3f9e53fa4fcceb0f4b4cbb00b338"
