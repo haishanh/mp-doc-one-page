@@ -1,0 +1,17 @@
+language: node_js
+cache:
+  yarn: true
+notifications:
+  email: false
+branches:
+  only:
+    - master
+node_js:
+  - "10"
+env:
+  global:
+    - NODE_ENV=production
+install:
+  - yarn
+script:
+  - yarn build
