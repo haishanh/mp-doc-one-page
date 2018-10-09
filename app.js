@@ -14,6 +14,8 @@ const readFile = util.promisify(fs.readFile);
 const rmdir = util.promisify(fs.rmdir);
 const mkdir = util.promisify(fs.mkdir);
 
+const sectionAnchors = [];
+
 async function getPage(url) {
   const res = await fetch(url, { timeout: 9000 });
   const text = await res.text();
@@ -51,6 +53,14 @@ function injectDateTime(templ) {
   return templ.replace(/\{\{datetime\}\}/, text);
 }
 
+function injectTableOfSections(templ, sectionAnchors) {
+  let str = '';
+  for (let i = 0; i < sectionAnchors.length; i++) {
+    str += sectionAnchors[i];
+  }
+  return templ.replace(/\{\{tos\}\}/, str);
+}
+
 function injectContent(templ, text) {
   return templ.replace(/\{\{content\}\}/, text);
 }
@@ -59,6 +69,7 @@ async function render(content) {
   let templ = await readFile('template.html', 'utf8');
   templ = injectContent(templ, content);
   templ = await injectStyle(templ);
+  templ = injectTableOfSections(templ, sectionAnchors);
   templ = injectDateTime(templ);
   return templ;
 }
@@ -70,6 +81,10 @@ async function genSection(item, idPrefix) {
   let html = parseTOC(fetchURL, text);
   html =
     `<div><h2 class="section-title" id="${id}">${title}</h2>` + html + '</div>';
+
+  // side effect
+  sectionAnchors.push(`<a href="#${id}">${title}</a>`);
+
   return html;
 }
 

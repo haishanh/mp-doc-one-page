@@ -78,3 +78,19 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+.table-of-sections {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  text-align: right;
+}
+.table-of-sections a {
+  display: block;
+  padding: 4px 0;
+  color: #999;
+}
+.table-of-sections a:hover {
+  color: #333;
+}
