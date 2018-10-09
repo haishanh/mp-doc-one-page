@@ -9,14 +9,14 @@ const groups = [
     title: '开发',
     sections: [
       {
-        id: 'tools',
-        title: '工具',
-        fetchURL: DevDocBaseUrl + '/devtools/devtools.html'
+        id: 'framework',
+        title: '框架',
+        fetchURL: DevDocBaseUrl + '/framework/MINA.html'
       },
       {
-        id: 'wxcloud',
-        title: '云开发',
-        fetchURL: DevDocBaseUrl + '/wxcloud/basis/getting-started.html'
+        id: 'api',
+        title: 'API',
+        fetchURL: DevDocBaseUrl + '/api/'
       },
       {
         id: 'component',
@@ -29,14 +29,14 @@ const groups = [
         fetchURL: DevDocBaseUrl + '/'
       },
       {
-        id: 'api',
-        title: 'API',
-        fetchURL: DevDocBaseUrl + '/api/'
+        id: 'tools',
+        title: '工具',
+        fetchURL: DevDocBaseUrl + '/devtools/devtools.html'
       },
       {
-        id: 'framework',
-        title: '框架',
-        fetchURL: DevDocBaseUrl + '/framework/MINA.html'
+        id: 'wxcloud',
+        title: '云开发',
+        fetchURL: DevDocBaseUrl + '/wxcloud/basis/getting-started.html'
       }
     ]
   },
