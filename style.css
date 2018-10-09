@@ -8,6 +8,10 @@ body {
     SimHei, 'WenQuanYi Zen Hei Sharp', sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 ul,
 li {
   line-height: 1.6em;
@@ -32,22 +36,35 @@ ul > li > a {
   top: 0px;
 }
 
+ul > li > ul > li a {
+  line-height: 35px;
+}
+
 ul > li > ul > li > a {
   position: static;
+  display: initial;
 }
 
-.summary {
-  margin-left: 200px;
+.blocks {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.section-title {
+.blocks .section-title {
+  flex-basis: 20%;
+}
+.blocks .summary {
+  flex-basis: 80%;
+  margin: 0;
+}
+
+.section-title h2 {
   display: flex;
   align-items: center;
-  height: 35px;
 
   position: sticky;
-  width: 200px;
-  top: 0px;
+  top: 0;
+
   background: rgba(255, 255, 255, 0.85);
   margin: 0;
   padding: 0;
