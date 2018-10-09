@@ -5,13 +5,26 @@ notifications:
   email: false
 branches:
   only:
-    - master
+  - master
 node_js:
-  - "10"
+- '10'
 env:
   global:
-    - NODE_ENV=production
+  - NODE_ENV=production
+  matrix:
+    secure: eaUkgeL0gfPMYXFnLI1zt2bQ33c9O0YwedFZLXCOdm3tDiFKvG0sS/vE4GBq/zYLVO6d/ZCd+Xa+JQPcARpD3VOCfBmXAJYWZaXIz5gdQ0Ph4MaP6G82Lb6Y2VFkhXfvzoGRlmd2FBXe0ZBRxE4RNGELMNq4iuZhH+7WUeOI0CJasEQ1/Ow37aERbA8qW/27l5WZw1KMClPQzn4SAvCXGziHRnbVbtZc3jgxbdvcqf5ncZ3syEdX6caWSkiPnjad3vkgW/JepnFNQaT2GHqH3rVrdvcCS4UaHLD1v9KDg+INk7fcg/zZr6yxHP+fM89jkAnOY0hQblDBK/mgJ3jmArjW0iMeBKNcPjLDoAWTM33JsMg09KgBMsupVSG/YgvWmIhCm4gFJXQnD92zFf2PtSu/8HejUu9/yR1CJIJnYYodzJ2y1uBPWRcu/Qm4hoNQ5ye6U31sm72ELNssuIDLWHqfsvR2n895W/3qQO85prQdMQJ86Iulm7Nt9hXJdnwP8JzV503+5r8CpSZ3hrcYpHOTEti/k1u6axamQXDrhlYALUn0Uq3XmRxHXArJ9RW8B6rCMNABG1igIjtUjb30Feyf7oEl+aF84WLOy+Nlj67H86f+g/x05+GK/P3f/wDdEsKaIAJ6vrK12AH4qdwv9J2Ru+KbNr2O+Gf2wkD5t/s=
 install:
-  - yarn
+- yarn
 script:
-  - yarn build
+- yarn build
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local-dir: build
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  committer-from-gh: true
+  allow-empty-commit: true
+  on:
+    branch: master
