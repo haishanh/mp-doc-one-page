@@ -18,6 +18,10 @@
     SimHei, 'WenQuanYi Zen Hei Sharp', sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 ul,
 li {
   line-height: 1.6em;
@@ -42,22 +46,35 @@ ul > li > a {
   top: 0px;
 }
 
+ul > li > ul > li a {
+  line-height: 35px;
+}
+
 ul > li > ul > li > a {
   position: static;
+  display: initial;
 }
 
-.summary {
-  margin-left: 200px;
+.blocks {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.section-title {
+.blocks .section-title {
+  flex-basis: 20%;
+}
+.blocks .summary {
+  flex-basis: 80%;
+  margin: 0;
+}
+
+.section-title h2 {
   display: flex;
   align-items: center;
-  height: 35px;
 
   position: sticky;
-  width: 200px;
-  top: 0px;
+  top: 0;
+
   background: rgba(255, 255, 255, 0.85);
   margin: 0;
   padding: 0;
@@ -119,12 +136,12 @@ footer {
     </div>
 
     <div class="generate-time">
-      生成时间 <time datetime="2018-10-09T15:32:02.915Z">2018-10-09T15:32:02.915Z</time>
+      生成时间 <time datetime="2018-10-09T17:20:20.823Z">2018-10-09T17:20:20.823Z</time>
     </div>
 
 
     <!-------->
-    <div><h2 class="section-title" id="dev-framework">框架</h2><ul class="summary">
+    <div class="blocks"><div class="section-title"><h2 id="dev-framework">框架</h2></div><ul class="summary">
     
 
         
@@ -301,7 +318,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="dev-api">API</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="dev-api">API</h2></div><ul class="summary">
     
 
         
@@ -1076,7 +1093,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="dev-component">组件</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="dev-component">组件</h2></div><ul class="summary">
     
 
         
@@ -1156,7 +1173,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="dev-quickstart">简易教程</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="dev-quickstart">简易教程</h2></div><ul class="summary">
     
 
         
@@ -1215,7 +1232,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="dev-tools">工具</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="dev-tools">工具</h2></div><ul class="summary">
     
 
         
@@ -1304,7 +1321,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="dev-wxcloud">云开发</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="dev-wxcloud">云开发</h2></div><ul class="summary">
     
 
         
@@ -1505,7 +1522,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="design-guide">设计指南</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="design-guide">设计指南</h2></div><ul class="summary">
     
 
         
@@ -1543,7 +1560,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="introduction-guide">开发指南</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="introduction-guide">开发指南</h2></div><ul class="summary">
     
 
         
@@ -1603,7 +1620,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="introduction-customerservice">客服功能使用指南</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="introduction-customerservice">客服功能使用指南</h2></div><ul class="summary">
     
 
         
@@ -1638,7 +1655,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="introduction-qrcode">扫码打开小程序接入指南</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="introduction-qrcode">扫码打开小程序接入指南</h2></div><ul class="summary">
     
 
         
@@ -1672,7 +1689,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="introduction-plugin">插件接入指南</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="introduction-plugin">插件接入指南</h2></div><ul class="summary">
     
 
         
@@ -1708,7 +1725,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="analysis-intro">功能概述</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="analysis-intro">功能概述</h2></div><ul class="summary">
     
 
         
@@ -1728,7 +1745,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="analysis-regular">常规分析</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="analysis-regular">常规分析</h2></div><ul class="summary">
     
 
         
@@ -1765,7 +1782,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="analysis-custom">自定义分析</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="analysis-custom">自定义分析</h2></div><ul class="summary">
     
 
         
@@ -1811,7 +1828,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="analysis-assistant">小程序数据助手</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="analysis-assistant">小程序数据助手</h2></div><ul class="summary">
     
 
         
@@ -1830,7 +1847,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="product-intro">运营规范</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="product-intro">运营规范</h2></div><ul class="summary">
     
 
         
@@ -1882,7 +1899,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="product-reject">常见拒绝情形</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="product-reject">常见拒绝情形</h2></div><ul class="summary">
     
 
         
@@ -1912,7 +1929,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="product-service">服务条款</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="product-service">服务条款</h2></div><ul class="summary">
     
 
         
@@ -1938,7 +1955,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="product-renzheng">微信认证指引</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="product-renzheng">微信认证指引</h2></div><ul class="summary">
     
 
         
@@ -1975,7 +1992,7 @@ footer {
         
 
     
-</ul></div><div><h2 class="section-title" id="product-material">开放的服务类目</h2><ul class="summary">
+</ul><div class="section-title"><h2 id="product-material">开放的服务类目</h2></div><ul class="summary">
     
 
         
