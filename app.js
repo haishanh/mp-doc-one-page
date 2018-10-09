@@ -37,7 +37,7 @@ function parseTOC(baseURL, text) {
 async function injectStyle(templ) {
   let style = '';
   if (process.env.NODE_ENV === 'development') {
-    style = `<link rel="stylesheet" href="style.css" charset="utf-8">`;
+    style = `<link rel="stylesheet" href="../style.css" charset="utf-8">`;
   } else {
     const x = await readFile('style.css', 'utf8');
     style = `<style>${x}</style>`;

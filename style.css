@@ -71,3 +71,10 @@ ul > li > ul > li > a {
   font-size: 0.75em;
   color: #777;
 }
+
+footer {
+  padding: 100px 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
