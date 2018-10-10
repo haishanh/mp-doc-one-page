@@ -52,6 +52,10 @@ async function getStyle() {
   return style;
 }
 
+async function getScript() {
+  return await readFile('template/script.js', 'utf8');
+}
+
 function getDateTime() {
   const t = new Date().toISOString();
   return `<time datetime="${t}">${t}</time>`;
@@ -81,12 +85,14 @@ async function render(templateFile, data) {
 
 async function genHTML(content) {
   const style = await getStyle();
+  const script = await getScript();
   // sectionAnchors is a file level global
   const tos = getTableOfSections(sectionAnchors);
   const datetime = getDateTime();
   return render('template/template.html', {
     content,
     style,
+    script,
     tos,
     datetime
   });
