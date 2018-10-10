@@ -121,6 +121,10 @@ footer {
 .table-of-sections a:hover {
   color: #333;
 }
+
+.hidden {
+  opacity: 0;
+}
 </style>
 
   </head>
@@ -141,8 +145,8 @@ footer {
           <img src="https://travis-ci.org/haishanh/mp-doc-one-page.svg?branch=master" alt="Build Status">
         </a>
       </div>
-      <div>
-        生成时间 <time datetime="2018-10-10T15:09:12.882Z">2018-10-10T15:09:12.882Z</time>
+      <div class="hidden">
+        生成时间 <time datetime="2018-10-10T15:25:05.884Z">2018-10-10T15:25:05.884Z</time>
       </div>
     </div>
 
@@ -2036,6 +2040,10 @@ footer {
 
     <script type="text/javascript">
       'use strict';
+
+var d = document.querySelector('time');
+d.innerText = new Date(d.innerText).toLocaleString();
+document.querySelector('.hidden').classList.remove('hidden');
 
 var s =
   '' +
