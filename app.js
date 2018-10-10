@@ -38,7 +38,7 @@ function parseTOC(baseURL, text) {
   return $.html('.summary');
 }
 
-async function injectStyle(templ) {
+async function getStyle() {
   let style = '';
   if (process.env.NODE_ENV === 'development') {
     style = `<link rel="stylesheet" href="../style.css" charset="utf-8">`;
@@ -46,34 +46,47 @@ async function injectStyle(templ) {
     const x = await readFile('style.css', 'utf8');
     style = `<style>${x}</style>`;
   }
-  return templ.replace(/\{\{style\}\}/, style);
+  return style;
 }
 
-function injectDateTime(templ) {
+function getDateTime() {
   const t = new Date().toISOString();
-  const text = `<time datetime="${t}">${t}</time>`;
-  return templ.replace(/\{\{datetime\}\}/, text);
+  return `<time datetime="${t}">${t}</time>`;
 }
 
-function injectTableOfSections(templ, sectionAnchors) {
+function getTableOfSections(sectionAnchors) {
   let str = '';
   for (let i = 0; i < sectionAnchors.length; i++) {
     str += sectionAnchors[i];
   }
-  return templ.replace(/\{\{tos\}\}/, str);
+  return str;
 }
 
 function injectContent(templ, text) {
   return templ.replace(/\{\{content\}\}/, text);
 }
 
-async function render(content) {
-  let templ = await readFile('template.html', 'utf8');
-  templ = injectContent(templ, content);
-  templ = await injectStyle(templ);
-  templ = injectTableOfSections(templ, sectionAnchors);
-  templ = injectDateTime(templ);
+async function render(templateFile, data) {
+  let templ = await readFile(templateFile, 'utf8');
+  const keys = Object.keys(data);
+  for (let i = 0; i < keys.length; i++) {
+    const k = keys[i];
+    templ = templ.replace(`{{${k}}}`, data[k]);
+  }
   return templ;
+}
+
+async function genHTML(content) {
+  const style = await getStyle();
+  // sectionAnchors is a file level global
+  const tos = getTableOfSections(sectionAnchors);
+  const datetime = getDateTime();
+  return render('template.html', {
+    content,
+    style,
+    tos,
+    datetime
+  });
 }
 
 async function genSection(item, idPrefix) {
@@ -115,9 +128,9 @@ async function prepare() {
 
 async function main() {
   try {
-    const [html, _] = await Promise.all([genBlock(), prepare()]);
+    const [content, _] = await Promise.all([genBlock(), prepare()]);
     // render
-    const outputHTML = await render(html);
+    const outputHTML = await genHTML(content);
     await writeFile('build/index.html', outputHTML, 'utf8');
   } catch (err) {
     debug(err);
