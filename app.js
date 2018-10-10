@@ -4,6 +4,7 @@ const fs = require('fs');
 const url = require('url');
 const util = require('util');
 const fetch = require('node-fetch');
+const execa = require('execa');
 const cheerio = require('cheerio');
 const debug = require('debug')('app');
 const withRetry = require('hs-with-retry');
@@ -41,9 +42,11 @@ function parseTOC(baseURL, text) {
 async function getStyle() {
   let style = '';
   if (process.env.NODE_ENV === 'development') {
-    style = `<link rel="stylesheet" href="../style.css" charset="utf-8">`;
+    // not await intentionally
+    execa('cp', ['template/style.css', 'build']);
+    style = `<link rel="stylesheet" href="style.css" charset="utf-8">`;
   } else {
-    const x = await readFile('style.css', 'utf8');
+    const x = await readFile('template/style.css', 'utf8');
     style = `<style>${x}</style>`;
   }
   return style;
@@ -81,7 +84,7 @@ async function genHTML(content) {
   // sectionAnchors is a file level global
   const tos = getTableOfSections(sectionAnchors);
   const datetime = getDateTime();
-  return render('template.html', {
+  return render('template/template.html', {
     content,
     style,
     tos,

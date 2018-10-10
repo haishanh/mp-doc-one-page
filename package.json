@@ -13,6 +13,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "debug": "^4.0.1",
+    "execa": "^1.0.0",
     "hs-with-retry": "^0.0.2",
     "node-fetch": "^2.2.0"
   },
