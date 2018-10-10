@@ -1,5 +1,9 @@
 'use strict';
 
+var d = document.querySelector('time');
+d.innerText = new Date(d.innerText).toLocaleString();
+document.querySelector('.hidden').classList.remove('hidden');
+
 var s =
   '' +
   '     (   )  \n' +

@@ -111,3 +111,7 @@ footer {
 .table-of-sections a:hover {
   color: #333;
 }
+
+.hidden {
+  opacity: 0;
+}
